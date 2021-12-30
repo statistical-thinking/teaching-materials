@@ -1,0 +1,58 @@
+---
+title: "Sechster Vorlesungstermin (RStudio)"
+author: "Dennis Klinkhammer (2022)"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Aufgabe: SECRET
+
+### Analysemodell
+
+```{r fig_1, echo=FALSE}
+DiagrammeR::grViz("
+digraph {
+  graph [layout = circo]
+  node [shape = circle]
+    A [label = 'x']
+    B [label = 'y']
+  edge []
+    A -> B
+}
+")
+```
+
+### Datensatz einlesen
+
+```{r table_1, echo=TRUE}
+secret <- read.csv("http://www.statistical-thinking.de/r-daten/fom/secret.csv", head=T, sep=";", dec=".")
+```
+
+### Datensatz auf Vollständigkeit überprüfen
+
+```{r table_2, echo=TRUE}
+dim(secret)
+```
+
+### Univariate Analyse
+
+```{r table_3, echo=TRUE}
+summary(secret)
+```
+
+```{r fig_4, echo=TRUE}
+boxplot(secret)
+```
+
+### Bivariate Analyse
+
+```{r table_5, echo=TRUE}
+cor(secret)
+```
+
+````{r fig_2, echo=TRUE}
+plot(secret)
+````

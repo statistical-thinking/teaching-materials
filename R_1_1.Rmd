@@ -1,0 +1,80 @@
+---
+title: "Erster Vorlesungstermin (RStudio)"
+author: "Dennis Klinkhammer (2022)"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Aufgabe: TREES
+
+### Analysemodell
+
+```{r fig_1, echo=FALSE}
+DiagrammeR::grViz("
+digraph {
+  graph [layout = circo]
+  node [shape = circle]
+    A [label = 'Girth']
+    B [label = 'Height']
+    C [label = 'Volume']
+  edge []
+    A -> C
+    A -> B
+    B -> A
+    B -> C
+}
+")
+```
+
+### Univariate Analyse
+
+```{r table_1, echo=TRUE}
+summary(trees)
+```
+
+```{r fig_2, echo=TRUE}
+boxplot(trees)
+```
+
+### Bivariate Analyse
+
+```{r table_2, echo=TRUE}
+cor(trees)
+```
+
+````{r fig_3, echo=TRUE}
+plot(trees$Volume~trees$Girth)
+abline(lm(trees$Volume~trees$Girth))
+````
+
+````{r fig_4, echo=FALSE}
+plot(trees$Volume~trees$Height)
+abline(lm(trees$Volume~trees$Height))
+````
+
+````{r fig_5, echo=FALSE}
+plot(trees$Height~trees$Girth)
+abline(lm(trees$Height~trees$Girth))
+````
+
+### Multivariate Analyse
+
+````{r table_3, echo=TRUE}
+summary(lm(Volume~Girth+Height, data=trees))
+````
+
+### Überprüfung der Vorhersagegenauigkeit
+
+````{r table_4, echo=TRUE}
+trees[13,]
+````
+
+````{r table_5, echo=TRUE}
+# VOLUME ~ -57.98 + GIRTH * 4.71 + HEIGHT * 0.34
+# 21.4 ~ -57.98 + 11.4 * 4.71 + 76 * 0.34
+# 21.4 ~ -57.98 + 53.69 + 25.84
+# 21.4 ~ 21.55
+````

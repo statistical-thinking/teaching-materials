@@ -1,0 +1,29 @@
+---
+title: "Siebter Vorlesungstermin (RStudio)"
+author: "Dennis Klinkhammer (2022)"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Aufgabe: TREES
+
+### Univariate Analyse
+
+```{r table_1, echo=TRUE}
+summary(trees)
+```
+
+```{r fig_1, echo=TRUE}
+plot(density(trees$Girth)) # leicht rechtsschief (Median < Mean)
+```
+
+```{r fig_2, echo=TRUE}
+plot(density(trees$Height)) # annähernd normalverteilt (Median = Mean)
+```
+
+```{r fig_3, echo=TRUE}
+plot(density(trees$Volume)) #rechtsschief und mehrgipflig (Median < Mean)
+```

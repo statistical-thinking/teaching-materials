@@ -1,0 +1,57 @@
+---
+title: "Zweiter Vorlesungstermin (RStudio)"
+author: "Dennis Klinkhammer (2022)"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Aufgabe: WEIN
+
+### Analysemodell
+
+```{r fig_1, echo=FALSE}
+DiagrammeR::grViz("
+digraph {
+  graph [layout = circo]
+  node [shape = circle]
+    A [label = 'sulphates']
+    B [label = 'citric.acid']
+    C [label = 'quality']
+  edge []
+    A -> B
+    B -> C
+}
+")
+```
+
+
+### Datensatz einlesen
+
+````{r table_1, echo=TRUE}
+wein <-read.csv("http://www.statistical-thinking.de/r-daten/fom/wine.csv", head=T, sep=";", dec=".") 
+````
+
+### Datensatz auf Vollständigkeit überprüfen
+
+````{r table_2, echo=TRUE}
+dim(wein)
+````
+
+### Univariate Analyse
+
+````{r table_3, echo=TRUE}
+summary(wein)
+````
+
+### Bivariate Analyse
+
+````{r table_4, echo=TRUE}
+plot(wein)
+````
+
+````{r table_5, echo=TRUE}
+cor(wein)
+````
