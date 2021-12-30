@@ -1,4 +1,4 @@
-# Programmierbeispiele zum Lehrbuch
+# Analysemodelle und Lösungsvorschläge
 Lehrmaterialien für Forschungsmethoden und Statistik
 
 # Autoren
