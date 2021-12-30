@@ -1,4 +1,4 @@
-# Analysemodelle und Lösungsvorschläge
+# Teaching Materials
 Lehrmaterialien für Forschungsmethoden und Statistik
 
 # Autoren
