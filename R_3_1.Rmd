@@ -18,7 +18,7 @@ digraph {
   graph [layout = circo]
   node [shape = circle]
     A [label = 'Fertility']
-    B [label = 'Agriclture']
+    B [label = 'Agriculture']
     C [label = 'Examination']
     D [label = 'Education']
     E [label = 'Catholic']
