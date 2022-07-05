@@ -1,0 +1,59 @@
+---
+title: "Tutorial / Lösungshinweise (RStudio)"
+author: "Dennis Klinkhammer (2022)"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Aufgabe: LONGLEY
+
+### Analysemodell
+
+```{r fig_1, echo=FALSE}
+DiagrammeR::grViz("
+digraph {
+  graph [layout = circo]
+  node [shape = circle]
+    A [label = 'GNP.deflator']
+    B [label = 'GNP']
+    C [label = 'Unemployed']
+    D [label = 'Armed.Forces']
+    E [label = 'Population']
+    F [label = 'Year']
+    G [label = 'Employed']
+  edge []
+    A -> B
+    B -> C
+    G -> C
+    D -> C
+    D -> G
+    F -> E
+    E -> B
+    G -> B
+    E -> G
+}
+")
+```
+
+### Univariate Analyse
+
+````{r table_1, echo=TRUE}
+summary(longley)
+````
+
+### Bivariate Analyse
+
+````{r fig_2, echo=TRUE}
+library(corrplot)
+corrmatrix <- cor(longley)
+corrplot.mixed(corrmatrix)
+````
+
+### Multivariate Analyse
+
+````{r table_2, echo=TRUE}
+summary(lm(Unemployed~GNP + Armed.Forces + Employed, data=longley))
+````

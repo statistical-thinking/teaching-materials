@@ -1,0 +1,75 @@
+---
+title: "Tutorial / Lösungshinweise (RStudio)"
+author: "Dennis Klinkhammer (2022)"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Aufgabe: WOMEN & CARS
+
+### Analysemodelle
+
+```{r fig_1, echo=FALSE}
+DiagrammeR::grViz("
+digraph {
+  graph [layout = circo]
+  node [shape = circle]
+    A [label = 'height']
+    B [label = 'weight']
+  edge []
+    A -> B
+}
+")
+```
+
+```{r fig_2, echo=FALSE}
+DiagrammeR::grViz("
+digraph {
+  graph [layout = circo]
+  node [shape = circle]
+    A [label = 'speed']
+    B [label = 'dist']
+  edge []
+    A -> B
+}
+")
+```
+
+### Univariate Analysen
+
+````{r table_1, echo=TRUE}
+summary(women)
+````
+
+````{r table_2, echo=TRUE}
+summary(cars)
+````
+
+### Bivariate Analysen
+
+````{r table_3, echo=TRUE}
+cor(women)
+````
+
+````{r table_4, echo=TRUE}
+cor(cars)
+````
+
+### Multivariate Analysen
+
+````{r table_5, echo=TRUE}
+summary(lm(weight~height, data=women))
+````
+
+````{r table_6, echo=TRUE}
+summary(lm(dist~speed, data=cars)) # korrektes Modell
+````
+
+### Abhängige und unabhängige Variable vertauschen
+
+````{r table_7, echo=TRUE}
+summary(lm(speed~dist, data=cars)) # nicht korrektes Modell
+````

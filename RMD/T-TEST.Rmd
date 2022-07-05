@@ -1,0 +1,53 @@
+---
+title: "Tutorial / Lösungshinweise (RStudio)"
+author: "Dennis Klinkhammer (2022)"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Aufgabe: T-TEST
+
+### Analysemodell
+
+```{r fig_1, echo=FALSE}
+DiagrammeR::grViz("
+digraph {
+  graph [layout = circo]
+  node [shape = circle]
+    A [label = 'supp']
+    B [label = 'length']
+  edge []
+    A -> B
+}
+")
+```
+
+### Univariate Analyse
+
+```{r table_1, echo=TRUE}
+summary(ToothGrowth)
+```
+
+```{r table_2, echo=TRUE}
+vc  <-  subset(ToothGrowth,  supp=="VC")
+summary(vc[c(1,3)])
+```
+
+```{r table_3, echo=TRUE}
+oj  <-  subset(ToothGrowth,  supp=="OJ")
+summary(oj[c(1,3)])
+```
+
+### Bivariate Analyse
+
+```{r fig_2, echo=TRUE}
+boxplot(ToothGrowth$len ~ ToothGrowth$supp,  xlab  =  "supp",  ylab  = 
+"length")
+```
+
+```{r table_4, echo=TRUE}
+t.test(ToothGrowth$len ~ ToothGrowth$supp)
+```
